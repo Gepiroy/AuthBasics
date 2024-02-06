@@ -1,17 +1,10 @@
-import Fastify from 'fastify'
+import express from 'express' // same as const express = require('express').
 import routeAuth from './routes/routeAuth.js'
 import routeInteract from './routes/routeInteract.js'
 
-const fastify = Fastify({
-    logger: true
-})
+const app = express()
+const port = 3000
 
-fastify.register(routeAuth)
-fastify.register(routeInteract)
-
-fastify.listen({ address: '0.0.0.0', port: 3000 }, function (err, address) {
-    if (err) {
-        fastify.log.error(err)
-        process.exit(1)
-    }
+app.listen(port, () => { //by default, it opens on 0.0.0.0, not on localhost.
+    console.log(`App listening on port ${port}`)
 })
