@@ -1,10 +1,11 @@
-import fastifyPlugin from 'fastify-plugin'
-import fastifyMysql from '@fastify/mysql'
+const mysql = require("mysql2");
 
-async function dbConnector (fastify, options) {
-    fastify.register(fastifyMysql, {
-     connectionString: 'mysql://root@localhost/auth_basics'
-    })
-}
+var pool = mysql.createPool({
+    connectionLimit: 5,
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "auth_basics",
+})
 
-export default fastifyPlugin(dbConnector)
+export default pool;

@@ -1,7 +1,8 @@
-async function routes (fastify, options) {
-    fastify.get('/take', async (request, reply) => { //getting some info which requires auth.
-        return { took: 'something probably will be taken.' }
-    })
-}
+import express from 'express'
+const router = express.Router()
 
-export default routes;
+router.get('/take', (req, res) => {
+  res.send({ took: 'something that you took' })
+})
+
+export default router;
