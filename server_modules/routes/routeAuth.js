@@ -12,6 +12,7 @@ router.post('/login', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
+  
   res.send({ token: 'token-will-be-here' })
 })
 
