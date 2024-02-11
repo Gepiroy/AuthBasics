@@ -1,18 +1,18 @@
-const mysql = require("mysql2");
-const settings = require("../configs/configDB.js");
+import mysql from "mysql2"
+import config from "../configs/configDB.js"
 
 const GlobalConnection = function(){
     //It's like a constructor in normal java. Nothing here for now.
 }
 
 const _globalConnection = mysql.createConnection({
-    host: settings.hostName,
-    user: settings.userName,
-    password: settings.userPass,
+    host: config.hostName,
+    user: config.userName,
+    password: config.userPass,
 })
 
 GlobalConnection.tryCreateDatabase = function(){
-    _globalConnection.query(`CREATE DATABASE IF NOT EXISTS ${settings.dbName}`);
+    _globalConnection.query(`CREATE DATABASE IF NOT EXISTS ${config.dbName}`);
 }
 
 GlobalConnection.close = async function(){

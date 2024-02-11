@@ -1,13 +1,13 @@
 //MVC - Model part with database creation and holding.
-const mysql = require("mysql2");
-const settings = require("../configs/configDB.js");
+import mysql from "mysql2"
+import config from "../configs/configDB.js"
 
 const db = mysql.createPool({ //Better for API-projects than connection. It's a pool of connections.
     connectionLimit: 5,
-    host: settings.hostName,
-    user: settings.userName,
-    password: settings.userPass,
-    database: settings.dbName,
+    host: config.hostName,
+    user: config.userName,
+    password: config.userPass,
+    database: config.dbName,
 })
 
 db.tryCreateTables = function(){

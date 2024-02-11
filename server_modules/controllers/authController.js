@@ -1,10 +1,10 @@
-const Auth = {} //empty object
+const Actions = {} //empty object
 
-Auth.login = (req, res) => {
+Actions.login = (req, res) => {
     res.send({ token: 'token-will-be-here' })
 }
-Auth.register = (req, res) => {
+Actions.register = (req, res) => {
     res.send({ token: 'token-will-be-here' })
 }
 
-export default Auth;
+export default Actions;
