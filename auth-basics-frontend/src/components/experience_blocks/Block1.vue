@@ -1,7 +1,4 @@
 <script setup>
-import BlockBase from './BlockBase.vue';
-
-  
 </script>
 
 <template>
