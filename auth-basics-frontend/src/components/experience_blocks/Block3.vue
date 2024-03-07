@@ -1,3 +1,7 @@
+<script setup>
+import StandPoint from './StandPoint.vue';
+</script>
+
 <template>
   <block-base
     title="Блок третий"
@@ -5,7 +9,9 @@
     с названием мероприятий. Сами точки и мероприятия будут доставаться из локальной базы-массива."
   >
     <div class="map-holder">
-
+      <img src="@/assets/map.jpg" :style="''+mapStyle()" />
+      
+      <stand-point v-for="(point, index) in points" :key="index" :style="'top:'+point.y*scale+'px; left: '+point.x*scale+'px;'"/>
     </div>
   </block-base>
 </template>
@@ -15,33 +21,54 @@
     position: relative;
     border: 1px white solid;
     padding: 2px;
+    max-width: 600px;
+    max-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .map{
+    
   }
 </style>
 
 <script>
 export default {
+  methods: {
+    mapStyle(){
+      let scale = this.scale
+      let ret = 'transform: '
+      let translate = (scale-1.0)*50
+      ret += 'translate('+translate+'%, '+translate+'%) '
+      ret += 'scale('+scale+');'
+      console.log("map style is "+ret)
+      return ret;
+    }
+  },
   data() {
     return {
       points: [
         {
-          x: 1,
-          y: 10,
+          x: 10,
+          y: 100,
           title: "Стенд-1",
           lore: "Ну типа стенд первый.",
         },
         {
-          x: 10,
-          y: 15,
+          x: 100,
+          y: 150,
           title: "Стенд-2",
           lore: "Ну типа стенд второй.",
         },
         {
-          x: 5,
-          y: 20,
+          x: 50,
+          y: 200,
           title: "Стенд-3",
           lore: "Ну типа стенд третий.",
         },
       ],
+      scale: 0.9,
     };
   },
 };
